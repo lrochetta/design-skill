@@ -39,6 +39,14 @@
   "engines": {
     "node": ">=18"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lrochetta/design-skill.git"
+  },
+  "homepage": "https://github.com/lrochetta/design-skill#readme",
+  "bugs": {
+    "url": "https://github.com/lrochetta/design-skill/issues"
+  },
   "license": "MIT",
   "author": "laurent"
 }
