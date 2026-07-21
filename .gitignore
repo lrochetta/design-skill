@@ -1,0 +1,30 @@
+# Atelier — public repo. Ship the tool only.
+# NOTE: R&D sources, third-party skill audits, agent research and the portfolio
+# brain live OUTSIDE this folder (in _design-skills/ and _brain/) and are not
+# part of this repo by construction. This ignore file covers local/build noise.
+
+# deps / build
+node_modules/
+dist/
+*.tgz
+.npm/
+
+# local link artifacts (the linker writes into ~ / project dirs, never here)
+.atelier-links.json
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.idea/
+.vscode/
+
+# logs
+*.log
+npm-debug.log*
+
+# never publish local secrets
+.credentials/
+.env
+.env.*
