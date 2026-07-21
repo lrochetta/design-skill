@@ -1,0 +1,28 @@
+name: publish
+
+# npm Trusted Publishing (OIDC) — no stored NPM_TOKEN.
+# Requires a one-time setup on npmjs.com: package "design-skill" → Settings →
+# Trusted Publisher → GitHub Actions → org "lrochetta", repo "design-skill",
+# workflow "publish.yml". The FIRST publish of the package must be done manually
+# (npm requires the package to exist before a trusted publisher can be configured).
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write # required for OIDC trusted publishing
+
+jobs:
+  npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: "https://registry.npmjs.org"
+      - run: npm install -g npm@latest # npm >= 11.5.1 required for OIDC
+      - run: npm publish --access public
