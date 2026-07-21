@@ -4,11 +4,11 @@
   "description": "Atelier — cross-CLI design engine: full UI/UX/design as spec-compliant Agent Skills (Claude Code, Codex, Gemini, Antigravity, Cursor). Anti-slop, WCAG 2.2, tokens, motion, quality gates.",
   "type": "module",
   "bin": {
-    "design-skill": "./bin/atelier.mjs"
+    "design-skill": "bin/atelier.mjs"
   },
   "scripts": {
-    "link:skills": "node ./bin/atelier.mjs link",
-    "unlink:skills": "node ./bin/atelier.mjs unlink"
+    "link:skills": "node bin/atelier.mjs link",
+    "unlink:skills": "node bin/atelier.mjs unlink"
   },
   "keywords": [
     "agent-skills",
