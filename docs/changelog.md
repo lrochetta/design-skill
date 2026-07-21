@@ -1,5 +1,19 @@
 # Changelog — Atelier
 
+## 2026-07-22 — v0.2.1 (trusted-publishing rail verification)
+
+- First release published via the **OIDC Trusted Publisher** rail (GitHub Actions → npm, no token).
+  Confirms `gh release create` → `.github/workflows/publish.yml` → `npm publish` end-to-end.
+
+## 2026-07-22 — PUBLISHED
+
+- **npm**: `design-skill@0.2.0` live → https://www.npmjs.com/package/design-skill (published via
+  `npm login`, account `laurent.rochetta`). `npx design-skill link` works.
+- **GitHub**: https://github.com/lrochetta/design-skill (public, MIT).
+- **Trusted Publishing**: OIDC workflow `.github/workflows/publish.yml` in place; future releases
+  publish tokenless once the trusted publisher is configured on npmjs.com (org `lrochetta`, repo
+  `design-skill`, workflow `publish.yml`).
+
 ## 2026-07-22 — v0.2.0 (completeness pass + standalone packaging)
 
 **Packaging (standalone public-repo ready):** added `package.json` (bin `atelier-design`, `files`

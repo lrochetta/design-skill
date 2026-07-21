@@ -1,6 +1,6 @@
 {
   "name": "design-skill",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Atelier — cross-CLI design engine: full UI/UX/design as spec-compliant Agent Skills (Claude Code, Codex, Gemini, Antigravity, Cursor). Anti-slop, WCAG 2.2, tokens, motion, quality gates.",
   "type": "module",
   "bin": {
