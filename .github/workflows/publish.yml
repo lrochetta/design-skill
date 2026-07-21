@@ -1,10 +1,16 @@
 name: publish
 
 # npm Trusted Publishing (OIDC) — no stored NPM_TOKEN.
-# Requires a one-time setup on npmjs.com: package "design-skill" → Settings →
-# Trusted Publisher → GitHub Actions → org "lrochetta", repo "design-skill",
-# workflow "publish.yml". The FIRST publish of the package must be done manually
-# (npm requires the package to exist before a trusted publisher can be configured).
+# One-time setup on npmjs.com: package "design-skill" → Settings → Trusted Publisher
+# → GitHub Actions → org "lrochetta", repo "design-skill", workflow "publish.yml".
+# The FIRST publish of a package must be done manually (npm requires the package to
+# exist before a trusted publisher can be declared on it).
+#
+# IMPORTANT: do NOT pass `registry-url` to actions/setup-node. When set, it writes
+# `//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}` into .npmrc; with no token
+# that empty auth entry makes npm attempt (failed) token auth and SKIP OIDC — the
+# publish then 404s. Leaving it out keeps the default registry (npmjs.org) and lets
+# npm >= 11.5.1 auto-detect the GitHub OIDC id-token and publish tokenlessly.
 
 on:
   release:
@@ -23,6 +29,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-          registry-url: "https://registry.npmjs.org"
       - run: npm install -g npm@latest # npm >= 11.5.1 required for OIDC
-      - run: npm publish --access public
+      - run: |
+          node --version
+          npm --version
+          npm publish --access public
