@@ -33,4 +33,11 @@ jobs:
       - run: |
           node --version
           npm --version
-          npm publish --access public
+          echo "OIDC_URL_SET=${ACTIONS_ID_TOKEN_REQUEST_URL:+yes}"
+          set +e
+          npm publish --access public --loglevel verbose
+          code=$?
+          echo "=== publish exit: $code ==="
+          echo "=== OIDC / auth trace from debug log ==="
+          grep -iEh "oidc|id-token|trusted|audience|exchange|provenance|401|403|404|ENEEDAUTH|Authorization|registry" /home/runner/.npm/_logs/*debug*.log | tail -60
+          exit $code
